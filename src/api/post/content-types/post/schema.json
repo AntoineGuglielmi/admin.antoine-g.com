@@ -1,0 +1,87 @@
+{
+  "kind": "collectionType",
+  "collectionName": "posts",
+  "info": {
+    "singularName": "post",
+    "pluralName": "posts",
+    "displayName": "Post"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "title": {
+      "type": "string",
+      "required": true
+    },
+    "description": {
+      "type": "text"
+    },
+    "slug": {
+      "type": "string",
+      "conditions": {
+        "visible": {
+          "!=": [
+            {
+              "var": "external"
+            },
+            true
+          ]
+        }
+      }
+    },
+    "url": {
+      "type": "string",
+      "conditions": {
+        "visible": {
+          "==": [
+            {
+              "var": "external"
+            },
+            true
+          ]
+        }
+      }
+    },
+    "external": {
+      "type": "boolean",
+      "required": true,
+      "default": false
+    },
+    "order": {
+      "type": "integer",
+      "default": 10
+    },
+    "version": {
+      "type": "enumeration",
+      "default": "Heri",
+      "enum": [
+        "Heri",
+        "Kari",
+        "Bono",
+        "Gino"
+      ]
+    },
+    "picture": {
+      "type": "media",
+      "multiple": false,
+      "allowedTypes": [
+        "images"
+      ]
+    },
+    "content": {
+      "type": "blocks",
+      "conditions": {
+        "visible": {
+          "!=": [
+            {
+              "var": "external"
+            },
+            true
+          ]
+        }
+      }
+    }
+  }
+}
